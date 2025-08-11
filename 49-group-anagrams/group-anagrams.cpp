@@ -4,7 +4,7 @@ public:
 
         unordered_map<string,vector<string>> mp;
 
-        for(auto x : strs){
+        for(auto &x : strs){
 
             string temp = x;
 
@@ -15,7 +15,7 @@ public:
 
         vector<vector<string>> res;
 
-        for(auto pair :mp){
+        for(auto &pair :mp){
             res.push_back(pair.second);
 
         }
