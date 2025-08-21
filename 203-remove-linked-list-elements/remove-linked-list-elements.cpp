@@ -14,20 +14,20 @@ public:
 
         ListNode* dummy = new ListNode(0,head);
 
-        ListNode* curr = head;
-        ListNode* prev = dummy;
+        ListNode* curr = dummy;
+        
 
-        while(curr != nullptr){
+        while(curr->next != nullptr){
 
 
-            if(curr->val == val){
+            if(curr->next->val == val){
 
-                ListNode* nxt = curr->next;
-                curr = curr->next;
-                prev->next = nxt;
+                // ListNode* nxt = curr->next;
+                curr->next = curr->next->next;
+                // prev->next = nxt;
 
             }else{
-                prev = curr;
+                
                 curr = curr->next;
             }
 
