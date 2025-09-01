@@ -1,54 +1,72 @@
-
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+    
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+*/
 
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
 
+        if(head == NULL) return NULL;
+
         Node* curr = head;
-        Node* newhead = nullptr;
-        Node* prev = nullptr;
 
-        unordered_map<Node*,Node*> mp;
-
-        if(head == nullptr) return NULL;
+        //making nodes
 
         while(curr){
-
-            Node* newnode = new Node(curr->val);
-
-            mp[curr] = newnode;
-
-            if(newhead == NULL){
-                newhead = newnode;
-                prev = newhead;
-            }else{
-                prev->next = newnode;
-               prev =  newnode;
-            }
-
-            curr  = curr->next;
-
-
+            Node* temp = curr->next;
+            curr->next = new Node(curr->val);
+            curr->next->next = temp;
+            curr = temp; 
 
         }
 
-        curr = head;
-        Node* newcurr = newhead;
+        //asigning random p
 
-        while(curr){
+        curr= head;
 
+        while(curr && curr->next){
             if(curr->random == NULL){
-                newcurr->random == NULL;
+                curr->next->random = NULL;
             }else{
-                newcurr->random = mp[curr->random];
+                curr->next->random = curr->random->next;
             }
 
-            curr= curr->next;
-            newcurr = newcurr->next;
+            curr= curr->next->next;
+        }
 
+        //splitting;
+        Node* newhead =head->next;
+        curr = head;
+
+        Node* newcurr = head->next;
+
+        while(curr && newcurr){
+
+            curr->next = curr->next == NULL?NULL:curr->next->next;
+            newcurr->next = newcurr->next == NULL?NULL:newcurr->next->next;
+
+            curr = curr->next;
+            newcurr = newcurr->next;
         }
 
         return newhead;
+
+
+
+
+
         
     }
 };
