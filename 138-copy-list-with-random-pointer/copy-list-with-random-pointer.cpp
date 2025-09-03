@@ -18,50 +18,49 @@ class Solution {
 public:
     Node* copyRandomList(Node* head) {
 
-        if(head == NULL) return NULL;
+        if(!head) return NULL;
 
         Node* curr = head;
 
-        //making nodes
-
         while(curr){
-            Node* temp = curr->next;
-            curr->next = new Node(curr->val);
-            curr->next->next = temp;
-            curr = temp; 
+            Node* temp = curr ->next;
+            Node* newnode = new Node(curr->val);
+            curr->next =newnode;
+            newnode->next = temp;
+            curr = curr->next->next;
 
         }
-
-        //asigning random p
 
         curr= head;
 
-        while(curr && curr->next){
+        while(curr){
+
             if(curr->random == NULL){
                 curr->next->random = NULL;
             }else{
-                curr->next->random = curr->random->next;
-            }
 
-            curr= curr->next->next;
+            curr->next->random = curr->random->next;
+            }
+            curr = curr->next->next;
         }
 
-        //splitting;
-        Node* newhead =head->next;
-        curr = head;
+        curr =head;
+        Node* newcurr = curr->next;
+        Node* newhead = newcurr;
 
-        Node* newcurr = head->next;
 
         while(curr && newcurr){
-
             curr->next = curr->next == NULL?NULL:curr->next->next;
             newcurr->next = newcurr->next == NULL?NULL:newcurr->next->next;
 
-            curr = curr->next;
+            curr= curr->next;
             newcurr = newcurr->next;
         }
 
         return newhead;
+
+
+
 
 
 
