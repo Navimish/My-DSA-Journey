@@ -1,7 +1,7 @@
 class MinStack {
         stack<int> st;
         stack<int> minst;
-        int minimum = INT_MAX;
+      
 public:
     MinStack() {
 
@@ -11,7 +11,7 @@ public:
     
     void push(int val) {
         st.push(val);
-        minimum = minst.empty()?val: min(val,minst.top());
+       int minimum = minst.empty()?val: min(val,minst.top());
         minst.push(minimum);
 
     
@@ -22,12 +22,7 @@ public:
 
         st.pop();
         minst.pop();
-        if(!minst.empty()){
-            minimum = minst.top();
-        }else{
-            minimum = INT_MAX;
-        }
-        
+      
     }
     
     int top() {
