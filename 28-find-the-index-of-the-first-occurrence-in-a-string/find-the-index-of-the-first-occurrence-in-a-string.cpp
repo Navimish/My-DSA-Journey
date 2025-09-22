@@ -6,9 +6,13 @@ public:
         
         for(int i =0; i<haystack.size()-needle.size()+1; i++){
 
-            string str = haystack.substr(i,needle.size());
+            int j = 0;
 
-            if(str == needle ) return i;
+            while(j<needle.size() && haystack[i+j] == needle[j] ){
+                j++;
+            }
+
+            if(j == needle.size() ) return i;
         }
 
         return -1;
