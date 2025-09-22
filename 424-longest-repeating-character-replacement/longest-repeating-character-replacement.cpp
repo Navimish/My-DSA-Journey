@@ -2,31 +2,31 @@ class Solution {
 public:
 
 
-    int getmaxfreq(vector<int> freq){
+    // int getmaxfreq(vector<int> freq){
 
-        int count = 0;
+    //     int count = 0;
 
-        for(auto &c :freq){
+    //     for(auto &c :freq){
 
-            count = max(count,c);
-        }
+    //         count = max(count,c);
+    //     }
 
-        return count;
-    }
+    //     return count;
+    // }
     int characterReplacement(string s, int k) {
 
         int r =0;
         int l =0;
+        int maxfreq =0;
 
         int res =0;
-
         vector<int> freq(26,0);
 
         for(; r<s.length(); r++){
 
             freq[s[r]-'A']++;
 
-            int maxfreq = getmaxfreq(freq);
+            maxfreq = max(maxfreq, freq[s[r]-'A']);
 
             if((r-l+1)-maxfreq > k){
                 freq[s[l]-'A']--;
