@@ -5,20 +5,38 @@ public:
 
         int n = s2.size();
         int m = s1.size();
-        sort(s1.begin(),s1.end());
 
-        for(int i = 0; i<n-m+1; i++){
+        vector<int>freq_s1(26,0);
+        vector<int>freq_s2(26,0);
 
-            string sub = s2.substr(i,m);
+        int i =0;
+        int j =0;
 
-            sort(sub.begin(), sub.end());
+        for(auto c: s1){
+            freq_s1[c-'a']++;
+        }
 
-            if(s1==sub) return true;
+        while(j<n){
+
+             freq_s2[s2[j]-'a']++;
+
+             if(j-i+1 > m){
+
+                freq_s2[s2[i]-'a']--;
+                i++;
+
+
+             }
+
+             if(freq_s2 == freq_s1) return true;
+
+             j++;
 
         }
 
 
         return false;
+      
 
         
     
