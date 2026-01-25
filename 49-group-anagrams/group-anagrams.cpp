@@ -4,20 +4,17 @@ public:
 
         unordered_map<string,vector<string>> mp;
 
-        for(auto &x : strs){
+        for(auto x: strs){
+            string y =x ;
+            sort(x.begin(), x.end());
 
-            string temp = x;
-
-            sort(temp.begin(),temp.end());
-
-            mp[temp].push_back(x);
+            mp[x].push_back(y);
         }
 
         vector<vector<string>> res;
 
-        for(auto &pair :mp){
-            res.push_back(pair.second);
-
+        for(auto x: mp){
+            res.push_back(x.second);
         }
 
         return res;
