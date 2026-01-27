@@ -3,16 +3,22 @@ public:
     int removeElement(vector<int>& nums, int val) {
 
         int i =0;
+        int j = nums.size();
 
-        for(int j =0; j<nums.size(); j++){
+        
 
-            if(nums[j] != val){
-                nums[i] = nums[j];
+        while(i<j){
+            if(nums[i]== val){
+                nums[i]=nums[j-1];
+                j--;
+            }else{
                 i++;
             }
+
+            
         }
 
-        return i;
+        return j;
         
     }
 };
