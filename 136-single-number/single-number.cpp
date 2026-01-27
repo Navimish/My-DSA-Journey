@@ -2,18 +2,11 @@ class Solution {
 public:
     int singleNumber(vector<int>& nums) {
 
-        unordered_map<int,int> mp;
+        int result = 0;
 
-        for(auto x : nums){
-            mp[x]++;
+        for(auto x: nums){
+            result ^= x;
         }
-
-
-        for(auto x : mp){
-            if(x.second == 1)return x.first;
-        }
-
-        return -1;
-        
+        return result;
     }
 };
