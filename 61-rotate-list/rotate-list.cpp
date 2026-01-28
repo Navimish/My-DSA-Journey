@@ -14,27 +14,30 @@ public:
 
         if (!head || !head->next || k == 0) return head;
 
+
         ListNode* temp = head;
 
-        int n= 0;
+        int n = 1;
 
         while(temp->next){
-            temp = temp->next;
             n++;
-
-        }
-        temp->next = head;
-        k = k%(n+1);
-        n= n-k;
-        temp =head;
-
-        while(n){
             temp = temp->next;
-            n--;
+
         }
 
-        ListNode* newhead = temp->next;
+        k = k%n;
+        temp->next = head;
 
+        int starting = n-k-1;
+
+        temp= head;
+
+
+        while(starting--){
+            temp = temp->next;
+        }
+
+        ListNode* newhead= temp->next;
         temp->next = nullptr;
 
         return newhead;
