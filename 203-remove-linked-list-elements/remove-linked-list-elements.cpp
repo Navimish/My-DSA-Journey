@@ -15,30 +15,17 @@ public:
         ListNode* dummy = new ListNode(0,head);
 
         ListNode* curr = dummy;
-        
 
-        while(curr->next != nullptr){
-
+        while(curr and curr->next){
 
             if(curr->next->val == val){
-
-                // ListNode* nxt = curr->next;
                 curr->next = curr->next->next;
-                // prev->next = nxt;
-
             }else{
-                
                 curr = curr->next;
             }
-
-            
-
-
-        }
+        } 
 
         return dummy->next;
-
-
         
     }
 };
