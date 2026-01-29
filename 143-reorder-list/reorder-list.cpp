@@ -12,30 +12,33 @@ class Solution {
 public:
     void reorderList(ListNode* head) {
 
-        stack<ListNode*> st;
+        stack<ListNode*>st;
 
         ListNode* curr = head;
+
         while(curr){
             st.push(curr);
             curr = curr->next;
         }
 
-        int n =st.size()/2;
-        curr= head;
+        int n = st.size()/2;
+
+        curr = head;
 
         while(n--){
-
             ListNode* top = st.top();
             st.pop();
-            ListNode* temp = curr->next;
-            curr->next= top;
-            
 
+            ListNode* temp = curr->next;
+
+            curr->next = top;
             top->next = temp;
+
             curr = temp;
         }
 
-        curr->next = nullptr;
+        curr->next= nullptr;
+
 
         
     }
