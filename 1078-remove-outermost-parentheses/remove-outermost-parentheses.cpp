@@ -2,21 +2,21 @@ class Solution {
 public:
     string removeOuterParentheses(string s) {
 
-        string res="";
-        stack<int> st;
+        int count = 0;
+        string res = "";
 
-        for( char c : s){
 
-            if(c == '('){
+        for(auto& x: s){
 
-                if(!st.empty()) res+= c;
-                st.push(c);
-            }else{
-                st.pop();
-                 if(!st.empty()) res+= c;
+            if(x == ')') count--;
 
-            }
+            if(count != 0) res+= x;
+
+
+            if(x=='(') count++;
         }
+
         return res;
+        
     }
 };
