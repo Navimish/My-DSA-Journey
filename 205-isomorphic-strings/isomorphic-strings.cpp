@@ -5,17 +5,17 @@ public:
         unordered_map<char,char> mp1;
         unordered_map<char,char> mp2;
 
-        for(int i = 0; i<s.length(); i++){
+        for(int i =0; i<s.length(); i++){
 
-            if((mp1.count(s[i]) && mp1[s[i]] != t[i] ) || (mp2.count(t[i]) && mp2[t[i]] != s[i])) return false;
+            if(mp1.count(s[i]) && mp1[s[i]] != t[i] || mp2.count(t[i]) && mp2[t[i]] != s[i] ){
+                return false;
+            }
 
-             mp1[s[i]] = t[i];
+            mp1[s[i]] = t[i];
             mp2[t[i]] = s[i];
         }
 
-       
-    return true;
+        return true;
         
     }
-
 };
