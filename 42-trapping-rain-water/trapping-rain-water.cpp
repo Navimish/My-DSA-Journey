@@ -1,48 +1,42 @@
 class Solution {
 public:
-    vector<int> getleftmax(vector<int>& height, int& n) {
-
-        vector<int> leftmax(n);
-
-        leftmax[0] = height[0];
-
-        for (int i = 1; i < n; i++) {
-
-            leftmax[i] = max(leftmax[i - 1], height[i]);
-        }
-
-        return leftmax;
-    }
-
-    vector<int> getrightmax(vector<int>& height, int& n) {
-
-        vector<int> rightmax(n);
-
-        rightmax[n-1] = height[n-1];
-
-        for (int i = n-2; i >= 0; i--) {
-
-            rightmax[i] = max(rightmax[i + 1], height[i]);
-        }
-
-        return rightmax;
-    }
-
     int trap(vector<int>& height) {
 
-        int sum = 0;
         int n = height.size();
 
-        vector<int> leftmax = getleftmax(height, n);
-        vector<int> rightmax = getrightmax(height, n);
+        int l =0;
+        int r = n-1;
+        int lm=0,rm =0;
+        int w =0;
 
-        for (int i = 0; i < n; i++) {
+        while(l<r){
 
-            int h = min(leftmax[i], rightmax[i]) - height[i];
+            if(height[l]<height[r]){
 
-            sum += h;
+                if(lm <= height[l]){
+                    lm =height[l];
+                }else{
+                    w += lm-height[l];
+
+                }
+
+                l++;
+            }else{
+               
+
+                if(rm <= height[r]){
+                    rm =height[r];
+                }else{
+                    w += rm-height[r];
+
+                }
+
+                r--;
+
+            }
         }
 
-        return sum;
+        return w;
+        
     }
 };
