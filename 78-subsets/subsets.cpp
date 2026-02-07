@@ -3,7 +3,7 @@ public:
 
 vector<vector<int>> res;
 
-    void solve(int i,vector<int>& nums,vector<int> temp){
+    void solve(int i,vector<int>& nums,vector<int>& temp){
 
         if(i>= nums.size()){
             res.push_back(temp);
