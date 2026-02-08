@@ -3,17 +3,16 @@ public:
     int maxProfit(vector<int>& prices) {
 
         int buy = INT_MAX;
-        int maxprofit = INT_MIN;
-        int profit = 0;
+        int profit = INT_MIN;
 
-        for(auto x : prices){
+        for(auto x: prices){
+            if(x<buy) buy= x;
 
-            buy = min(buy,x);
-            profit = x-buy;
-            maxprofit = max(maxprofit,profit);
+            int dayp = x-buy;
+            profit = max(profit,dayp);
         }
 
-        return maxprofit;
+        return profit;
         
     }
 };
