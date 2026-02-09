@@ -3,7 +3,7 @@ public:
 
     vector<vector<int>> res;
 
-    void solve(int i, int n, int k, vector<int> temp){
+    void solve(int i, int n, int k, vector<int>& temp){
 
         if(n-i+1 <k) return;
 
