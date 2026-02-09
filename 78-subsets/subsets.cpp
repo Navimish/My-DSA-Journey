@@ -3,28 +3,33 @@ public:
 
 vector<vector<int>> res;
 
-    void solve(int i,vector<int>& nums,vector<int>& temp){
+void solve(vector<int> temp, vector<int> nums,int i){
 
-        if(i>= nums.size()){
-            res.push_back(temp);
-            return;
-        }
+    int n = nums.size();
 
-        temp.push_back(nums[i]);
-        solve(i+1,nums,temp);
-        temp.pop_back();
-        solve(i+1,nums,temp);
-
-
+    if(i>=n){
+        res.push_back(temp);
+        return;
     }
+
+    temp.push_back(nums[i]);
+    solve(temp,nums,i+1);
+    temp.pop_back();
+    solve(temp,nums, i+1);
+
+    
+}
 
 
     vector<vector<int>> subsets(vector<int>& nums) {
 
         vector<int> temp;
+        int i = 0;
 
-        solve(0,nums,temp );
+
+        solve(temp,nums,i);
 
         return res;
+        
     }
 };
