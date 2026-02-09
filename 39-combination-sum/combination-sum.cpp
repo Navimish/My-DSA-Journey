@@ -5,24 +5,21 @@ public:
 
      void solve(int idx ,int target,vector<int> candidates, vector<int>& temp ){
 
-        if(idx >= candidates.size()){
-            // res.push_back(temp);
-            return;
-        }
+     if(target == 0){
+        res.push_back(temp);
+        return;
+     }
 
-        if(target == 0){
-            res.push_back(temp);
-            return;
-        }
+     for(int i = idx; i<candidates.size(); i++){
 
-        if(candidates[idx] <= target){
-            temp.push_back(candidates[idx]);
-            solve(idx,target-candidates[idx],candidates,temp);
-            temp.pop_back();
-        }
+        if(candidates[i] > target) continue;
 
-        solve(idx+1,target,candidates,temp);
+        temp.push_back(candidates[i]);
+        solve(i,target-candidates[i],candidates,temp);
+        temp.pop_back();
 
+
+     }
 
      }
 
