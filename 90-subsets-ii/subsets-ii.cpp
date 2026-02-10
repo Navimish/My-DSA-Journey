@@ -1,27 +1,33 @@
 class Solution {
 public:
+
     vector<vector<int>> res;
 
-    void solve(int start, vector<int> num, vector<int>& temp) {
+    void solve(int start, vector<int> nums, vector<int>& temp){
+        int n = nums.size();
 
         res.push_back(temp);
 
-        for (int i = start; i <num.size(); i++){
 
-            if(i>start && num[i]==num[i-1]) continue;
+        for(int i = start; i<n; i++){
 
-            temp.push_back(num[i]);
-            solve(i+1,num,temp);
+            if(i>start && nums[i] == nums[i-1]) continue;
+            temp.push_back(nums[i]);
+            solve(i+1,nums,temp);
             temp.pop_back();
-        }
-    }
-    vector<vector<int>> subsetsWithDup(vector<int>& num) {
 
-        sort(num.begin(), num.end());
+
+        }
+
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+
+        sort(nums.begin(),nums.end());
 
         vector<int> temp;
-        solve(0, num, temp);
+        solve(0,nums,temp);
 
         return res;
+        
     }
 };
