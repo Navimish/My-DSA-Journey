@@ -10,16 +10,21 @@ public:
             return;
         }
 
-        if(target < 0) return;
+        // if(target < 0) return;
 
 
         for(int i = start; i< candidates.size(); i++){
+
+            if(candidates[i]>target) break;
+
+
             temp.push_back(candidates[i]);
             solve(i,candidates,target-candidates[i],temp);
             temp.pop_back();
         }
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        sort(candidates.begin(),candidates.end());
 
         vector<int> temp;
         solve(0,candidates,target,temp);
