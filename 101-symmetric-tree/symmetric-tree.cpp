@@ -12,22 +12,16 @@
 class Solution {
 public:
 
-    bool check(TreeNode* left,TreeNode* right){
-        if(!left && !right) return true;
+     bool check(TreeNode* l, TreeNode* r){
+        if(!l && !r) return true;
+        if(!l || !r) return false;
 
-        if(!left || !right) return false;
-
-        if((left->val == right->val ) && check(left->left,right->right) && check(left->right,right->left)) return true;
-
-
+        if(l->val == r->val && check(l->left,r->right)&& check(l->right,r->left)) return true;
         return false;
-    }
-
+     }
     bool isSymmetric(TreeNode* root) {
-
-        if(!root) return true;
-
-        return check(root->left, root->right);
+        if(!root) return false;
+         return check(root->left, root->right);
         
     }
 };
