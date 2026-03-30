@@ -24,20 +24,24 @@ public:
 
         Node* curr = root;
 
-        while(curr->left){
+        while (curr->left) {
 
             Node* temp = curr;
 
-            while(curr){
+            while (curr) {
+
                 curr->left->next = curr->right;
-                curr->right->next = curr->next == NULL?NULL :curr->next->left;
-                curr=curr->next;
+
+                if (curr->next) {
+                    curr->right->next = curr->next->left;
+                }
+
+                curr = curr->next;
             }
 
-            curr= temp->left;
+            curr = temp->left;
         }
 
         return root;
-        
     }
 };
