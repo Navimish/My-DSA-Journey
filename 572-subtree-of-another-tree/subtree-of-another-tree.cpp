@@ -11,20 +11,19 @@
  */
 class Solution {
 public:
-
+    
     bool isidentical(TreeNode* root, TreeNode* subRoot){
-        if(!root && !subRoot) return true;
+        if(!root && ! subRoot) return true;
         if(!root || !subRoot) return false;
 
         if(root->val != subRoot->val) return false;
 
-        return isidentical(root->left,subRoot->left) && isidentical(root->right, subRoot->right);
+        return isidentical(root->left,subRoot->left) && isidentical(root->right,subRoot->right);
     }
-    
-    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        if(!subRoot) return true;
 
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
         if(!root) return false;
+        if(!subRoot) return true;
 
         if(isidentical(root,subRoot)) return true;
 
