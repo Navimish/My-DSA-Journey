@@ -2,17 +2,18 @@ class Solution {
 public:
     int missingNumber(vector<int>& nums) {
 
+        int sum = 0;
+
         int n = nums.size();
-        int sum = n *(n+1)/2;
+        int sec_sum = n*(n+1)/2;
 
-        int actual_sum =0;
-
-        for(auto x: nums){
-            actual_sum += x;
+        for(auto x:nums){
+            sum += x;
         }
 
-        int num = sum-actual_sum;
-        return num;
+        int remain = sec_sum - sum;
+
+        return remain;
         
     }
 };
