@@ -14,27 +14,28 @@ public:
 
         ListNode* dummy = new ListNode(0,head);
 
-        ListNode* curr = dummy;
-
-        int len = 0;
-
-        ListNode* temp =head;
-
-        while(temp){
-            len++;
-            temp = temp->next;
-        }
+    int l =0;
 
 
-        int fromstart = len-n;
+    ListNode* curr = head;
+    while(curr){
+        l++;
+        curr = curr->next;
+    }
 
-        while(fromstart--){
-            curr = curr->next;
-        }
+    int node = l-n;
 
-        curr->next = curr->next->next;
+    curr= dummy;
 
+    while(node--){
 
-        return dummy->next;
+        curr = curr->next;
+
+    }
+
+    curr->next = curr->next->next;
+
+    return dummy->next;
+        
     }
 };
