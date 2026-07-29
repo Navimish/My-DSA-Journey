@@ -12,32 +12,22 @@
 class Solution {
 public:
 
-        int solve(TreeNode* root, int& res){
-            if(!root) return 0;
+    int solve(TreeNode* root, int& dia){
+        if(!root) return 0;
 
-            int lh = solve(root->left,res);
-            int rh = solve(root->right,res);
+        int lh = solve(root->left,dia);
+        int rh = solve(root->right,dia);
 
-            res = max(res,lh+rh);
+        dia = max(dia,lh+rh);
 
-            return max(lh,rh)+1;
-        }
+        
 
-
+        return max(lh,rh) +1;
+    }
     int diameterOfBinaryTree(TreeNode* root) {
 
-        int res = INT_MIN;
-       solve(root,res);
-       return res;
-        
+        int dia = 0;
+        solve(root,dia);
+        return dia;
     }
 };
-
-
-
-
-
-
-
-
-
