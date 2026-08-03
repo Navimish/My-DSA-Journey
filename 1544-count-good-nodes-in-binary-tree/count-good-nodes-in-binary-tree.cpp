@@ -12,31 +12,27 @@
 class Solution {
 public:
 
-    void cgn(TreeNode* root, int& count, int maxval){
-
+    void solve(TreeNode* root, int& count,int maxval){
         if(!root) return ;
 
-        if(root->val>= maxval){
+        if(root->val >=maxval){
             count++;
-            maxval = root->val;
+            maxval=root->val;
         }
 
-        cgn(root->left,count, maxval);
-        cgn(root->right,count, maxval);
+        solve(root->left,count,maxval);
+        solve(root->right,count,maxval);
 
 
     }
 
-
     int goodNodes(TreeNode* root) {
-
+        
         int count = 0;
 
-        if(!root) return  count;
-
-        cgn(root,count,root->val);
+        if(!root) return count;
+        solve(root,count,root->val);
 
         return count;
-        
     }
 };
