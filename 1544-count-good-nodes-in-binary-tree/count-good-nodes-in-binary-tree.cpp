@@ -34,5 +34,9 @@ public:
         solve(root,count,root->val);
 
         return count;
-    }
+
+        
+    }   
+
+    
 };
