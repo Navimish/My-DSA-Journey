@@ -24,15 +24,15 @@ public:
 
         Node* curr = root;
 
-        while (curr->left) {
+        while(curr->left){
 
             Node* temp = curr;
 
-            while (curr) {
+            while(curr){
 
                 curr->left->next = curr->right;
 
-                if (curr->next) {
+                if(curr->next){
                     curr->right->next = curr->next->left;
                 }
 
@@ -43,5 +43,6 @@ public:
         }
 
         return root;
+        
     }
 };
