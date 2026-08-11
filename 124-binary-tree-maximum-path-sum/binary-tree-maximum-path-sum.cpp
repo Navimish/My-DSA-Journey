@@ -12,29 +12,27 @@
 class Solution {
 public:
 
-    int solve(TreeNode* root, int& maxsum){
+    int solve(TreeNode* root, int& sum){
+
         if(!root) return 0;
 
-        int l = solve(root->left,maxsum);
-        int r = solve(root->right,maxsum);
+        int lh = solve(root->left, sum);
+        int rh = solve(root->right, sum);
 
-        int dono_side_se_best = l+r+root->val;
-        int koi_ek_acha = max(l,r) + root->val;
-        int sirf_root_acha = root->val;
+        int both_good = lh+rh+root->val;
+        int only_one = max(lh,rh) + root->val;
+        int only_root = root->val;
 
-        maxsum = max({maxsum,dono_side_se_best,koi_ek_acha,sirf_root_acha});
+        sum =max({sum,both_good,only_one,only_root});
 
-        return max(koi_ek_acha,sirf_root_acha); 
-
+        return max(only_one,only_root);
     }
-
     int maxPathSum(TreeNode* root) {
 
-        int maxsum = INT_MIN;
+        int sum = INT_MIN;
+        solve(root,sum);
 
-        solve(root,maxsum);
-
-        return maxsum;
+        return sum;
         
     }
 };
