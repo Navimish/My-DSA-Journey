@@ -9,14 +9,12 @@ public:
 
             sum += x;
 
-            if(sum> maxsum){
+            if(sum >maxsum){
                 maxsum = sum;
             }
 
-
-            if(sum<0) sum = 0;
+            if(sum < 0) sum = 0;
         }
-
 
         return maxsum;
         
