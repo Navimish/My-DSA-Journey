@@ -2,25 +2,23 @@ class Solution {
 public:
     int maxFreqSum(string s) {
 
-        unordered_map<char,int> mp;
-        int maxv=0;
-        int maxc=0;
+        unordered_map<char, int> mp;
+        string vowel = "aeiou";
+
+        int maxv = 0;
+        int maxc =0;
 
         for(auto& x: s){
             mp[x]++;
 
-            if(x == 'a' ||x == 'e' || x == 'i' || x == 'o' || x == 'u' ){
+            if(vowel.find(x) != string::npos){
                 maxv = max(maxv,mp[x]);
             }else{
-
-                 maxc = max(maxc,mp[x]);
-
+                maxc = max(maxc,mp[x]);
             }
         }
 
-        return maxv+maxc;
+        return maxc +maxv;
         
-
-
     }
 };
