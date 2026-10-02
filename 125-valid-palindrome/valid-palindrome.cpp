@@ -9,21 +9,16 @@ public:
 
             if(!isalnum(s[l])){
                 l++;
-            } else if(!isalnum(s[r])){
+            }else if( !isalnum(s[r])){
                 r--;
             }else if(tolower(s[l]) == tolower(s[r])){
-
-                l++;
-                r--;
-
+                l++; r--;
             }else{
                 return false;
             }
         }
 
         return true;
-
-
         
     }
 };
