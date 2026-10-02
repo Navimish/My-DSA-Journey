@@ -4,20 +4,21 @@ public:
 
         sort(strs.begin(), strs.end());
 
-        string s1 = strs[0];
-        string s2 = strs[strs.size()-1];
+        int n = strs.size();
+        string f = strs[0];
+        string l = strs[n-1];
 
-        int i = 0;
-        while( i<s1.length() && i<s2.length()){
+        string res = "";
 
-            if(s1[i] != s2[i] ){
-                break;
-            }
+        int i =0;
+
+        while(i < f.length() && i < l.length() && f[i] == l[i]){
+
+            res += f[i];
             i++;
         }
 
-        return s1.substr(0,i);
-
+        return res;
         
     }
 };
