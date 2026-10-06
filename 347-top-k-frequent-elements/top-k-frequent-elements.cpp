@@ -10,7 +10,7 @@ public:
         }
 
         vector<pair<int, int>> v(mp.begin(), mp.end());
-        sort(v.begin(), v.end(),  [](pair<int, int> &a, pair<int, int> &b){
+        sort(v.begin(), v.end(),  [](auto &a, auto &b){
             return a.second > b.second;
         });
 
