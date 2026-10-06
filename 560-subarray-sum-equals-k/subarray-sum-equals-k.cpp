@@ -2,22 +2,23 @@ class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
 
-        int res = 0;
-        int currentSum = 0;
-
         unordered_map<int, int> mp;
 
-        mp[0] =1;
+        int res = 0;
+        int curr = 0;
 
-        for(int i = 0; i< nums.size(); i++){
+        mp[0] = 1;
 
-            currentSum += nums[i];
+        for(auto& x: nums){
 
-            if(mp.find(currentSum-k) != mp.end()){
-                res +=  mp[currentSum-k];
+            curr += x;
+
+            if(mp.find(curr -k) != mp.end()){
+
+                res += mp[curr-k];
             }
 
-            mp[currentSum]++;
+            mp[curr]++;
         }
 
         return res;
