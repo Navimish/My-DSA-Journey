@@ -9,10 +9,11 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {    
+class Solution {
 public:
 
     int height(TreeNode* root){
+
         if(!root) return 0;
 
         int lh = height(root->left);
@@ -21,15 +22,15 @@ public:
         int rh = height(root->right);
         if(rh == -1) return -1;
 
-        if(abs(lh-rh) >1) return -1;
+        int diff = abs(lh-rh);
+
+        if(diff >1) return -1;
 
         return max(lh,rh)+1;
     }
-
     bool isBalanced(TreeNode* root) {
 
-       return  height(root) != -1;
-        
+        return height(root) != -1;
         
     }
 };
