@@ -26,8 +26,9 @@ public:
 
         if(diff >1) return -1;
 
-        return max(lh,rh)+1;
+        return max(lh,rh) +1;
     }
+
     bool isBalanced(TreeNode* root) {
 
         return height(root) != -1;
