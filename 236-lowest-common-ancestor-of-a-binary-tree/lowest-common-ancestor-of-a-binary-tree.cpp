@@ -15,14 +15,15 @@ public:
 
         if(root == p || root == q) return root;
 
-        TreeNode* leftN= lowestCommonAncestor(root->left,p,q);
-        TreeNode* rightN= lowestCommonAncestor(root->right,p,q);
+        TreeNode* leftN = lowestCommonAncestor(root->left,p,q );
+        TreeNode* rightN = lowestCommonAncestor(root->right,p,q );
 
         if(leftN && rightN) return root;
 
-        if(leftN) return leftN;
+        if(leftN ) return leftN;
 
         return rightN;
+
         
     }
 };
