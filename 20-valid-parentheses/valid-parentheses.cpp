@@ -2,24 +2,24 @@ class Solution {
 public:
     bool isValid(string s) {
 
-        if(s.length() == 0) return false;
-        if(s.length() == 1) return false;
+        int n = s.length();
+        if(n == 1) return false;
+
 
         stack<char> st;
 
-        string open = "({[";
-
         for(auto& x: s){
 
-            if(open.find(x) != string::npos){
+            if( x == '(' || x == '{' || x == '['){
+
                 st.push(x);
             }else{
 
                 if(st.empty()) return false;
 
-                int y = st.top();
+                char top = st.top();
 
-                if(x == ')' && y== '(' || x == '}' && y== '{' || x == ']' && y== '[' ){
+                if(x == ')' && top == '('  || x == '}' && top == '{' || x == ']' && top == '['){
                     st.pop();
                 }else{
                     return false;
