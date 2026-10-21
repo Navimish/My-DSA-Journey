@@ -1,50 +1,15 @@
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {
-        
-        int n = nums.size();
-        int l = 0;
-        int h = n-1;
 
-        bool iseven;
+       int ans = 0;
 
-  
+        for(auto& x: nums){
 
-        while(l<h){
-
-                  int mid = l+(h-l)/2;
-
-                if((h-mid)%2 == 0){
-                    iseven = true;
-                }else{
-                    iseven = false;
-                }
-
-            if(nums[mid] == nums[mid+1]){
-
-                if(iseven){
-                    l = mid+2;
-                }else{
-                    h = mid-1;
-                }
-
-            }else{
-
-                if(iseven){
-                    h = mid;
-                }else{
-                    l = mid+1;
-                }
-
-            }
+                ans ^= x;
         }
 
-        return nums[l];
-
-
-
-
-   
+        return ans;
         
     }
 };
