@@ -1,33 +1,24 @@
 class Solution {
 public:
-
 vector<vector<int>> res;
+void solve( int i ,vector<int>& nums,  vector<int> temp ){
 
-void solve(vector<int> temp, vector<int> nums,int i){
-
-    int n = nums.size();
-
-    if(i>=n){
+    if(i >= nums.size()){
         res.push_back(temp);
-        return;
+        return ;
     }
 
-    temp.push_back(nums[i]);
-    solve(temp,nums,i+1);
-    temp.pop_back();
-    solve(temp,nums, i+1);
-
-    
+    temp.push_back(nums[i]);  // choose karo
+    solve(i+1,nums,temp);
+    temp.pop_back();  // dont choose
+    solve(i+1, nums, temp);
 }
-
 
     vector<vector<int>> subsets(vector<int>& nums) {
 
         vector<int> temp;
-        int i = 0;
 
-
-        solve(temp,nums,i);
+        solve(0,nums, temp);
 
         return res;
         
