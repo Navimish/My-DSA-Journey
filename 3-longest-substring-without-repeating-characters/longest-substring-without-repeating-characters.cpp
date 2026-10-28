@@ -4,27 +4,25 @@ public:
 
         int n = s.length();
 
-        if(n== 0) return 0;
-
-        unordered_set<char> set;;
-
         int i = 0;
 
-        int len = INT_MIN;
+        unordered_set<char> st;
 
-        for(int j = 0; j<n; j++){
+        int maxl = 0;
 
-            while(set.find(s[j]) != set.end()){
-                set.erase(s[i]);
+        for(int j = 0; j<n; j++ ){
+
+            while(st.find(s[j]) != st.end()){
+                st.erase(s[i]);
                 i++;
             }
 
-            set.insert(s[j]);
+            maxl = max(maxl, j-i+1);
 
-            len = max(len,j-i+1);
+            st.insert(s[j]);
         }
 
-        return len;
+        return maxl;
         
     }
 };
