@@ -4,6 +4,8 @@ public:
 
         int n = s.length();
 
+        if(n == 0) return 0;
+
         int i = 0;
 
         unordered_set<char> st;
