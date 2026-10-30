@@ -2,23 +2,26 @@ class Solution {
 public:
     vector<int> findWordsContaining(vector<string>& words, char x) {
 
-       vector<int> res;
+        vector<int> res;
 
-       int n = words.size();
+        int n = words.size();
 
-       if(n== 0) return res;
+        for(int i = 0; i<n; i++){
 
-       for( int j =0; j<n; j++){
-            int l = words[j].length();
-            for(int i = 0; i< l; i++){
-                if(words[j][i] == x) {
-                    res.push_back(j);
-                    break;
-                }
+            int l = words[i].length();
+
+           for(int j = 0; j<l; j++){
+
+            if(words[i][j] == x){
+                res.push_back(i);
+                break;
             }
-       } 
+           }
 
-       return res;
+
+        }
+
+        return res;
         
     }
 };
