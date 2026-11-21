@@ -2,28 +2,21 @@ class Solution {
 public:
     int minAddToMakeValid(string s) {
 
-        int o = 0;
-        int add= 0;
+        int c1 = 0;
+        int c2 = 0;
 
         for(auto& x: s){
 
-            if( x == '('){
-                o++;
-            }else{
-                if(o > 0){
-                    o--;
-                }else{
-                    add++;
-                }
-                
+            if(x == '(') c1++;
+            if(x == ')' && c1 >0){
+                c1--;
+            }else if(x == ')'){
+                c2++;
             }
+
         }
 
-        return add + o;
-
-        
-        
-        
+        return  c1+c2;
         
     }
 };
