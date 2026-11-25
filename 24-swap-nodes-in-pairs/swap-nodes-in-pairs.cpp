@@ -15,17 +15,18 @@ public:
         if(!head || !head->next) return head;
 
         ListNode* dummy = new ListNode(0,head);
+
         ListNode* prev = dummy;
 
         while(prev->next && prev->next->next){
-
-            ListNode* f= prev->next;
-            ListNode* s= prev->next->next;
+            ListNode* f = prev->next;
+            ListNode* s = prev->next->next;
 
             f->next = s->next;
             s->next = f;
             prev->next = s;
             prev = f;
+
         }
 
         return dummy->next;
